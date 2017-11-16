@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="TextView" />
+
+    <TabHost
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="400dp">
+
+                <LinearLayout
+                    android:id="@+id/Checklist"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <CheckBox
+                            android:id="@+id/viewtaskcheck1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="0"
+                            android:layout_row="0"
+                            android:text="" />
+
+                        <EditText
+                            android:id="@+id/checklisttask1"
+                            android:layout_width="300dp"
+                            android:layout_height="wrap_content"
+                            android:layout_column="1"
+                            android:layout_row="0"
+                            android:text="Task Name" />
+
+                        <CheckBox
+                            android:id="@+id/viewtaskcheck2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_column="0"
+                            android:layout_row="1"
+                            android:text="" />
+
+                        <EditText
+                            android:id="@+id/checklisttask2"
+                            android:layout_width="300dp"
+                            android:layout_height="wrap_content"
+                            android:layout_column="1"
+                            android:layout_row="1"
+                            android:text="Task Name" />
+                    </GridLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/Calendar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <CalendarView
+                        android:id="@+id/CalendarView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+
+
+            </FrameLayout>
+
+            <Button
+                android:id="@+id/add_new_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="Add New Task" />
+
+        </LinearLayout>
+
+    </TabHost>
+
+
+</LinearLayout>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+ <EditText
+     android:id="@+id/NewTaskTitle"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:ems="10"
+     android:inputType="text"
+     android:text="New Task" />
+
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="horizontal">
+
+  <TextView
+      android:id="@+id/NameField_add"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:text="Name:" />
+
+  <EditText
+      android:id="@+id/EnterName"
+      android:layout_width="98dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:ems="2"
+      android:inputType="textPersonName"
+      android:singleLine="false"
+      android:text="Enter Task Name" />
+
+ </LinearLayout>
+
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="horizontal">
+
+  <TextView
+      android:id="@+id/TaskType_add"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:text="Type:" />
+
+  <EditText
+      android:id="@+id/EnterTask"
+      android:layout_width="92dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:ems="2"
+      android:inputType="textPersonName"
+      android:text="Enter Task Type" />
+
+ </LinearLayout>
+
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="horizontal">
+
+  <TextView
+      android:id="@+id/DateOfTask"
+      android:layout_width="158dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:text="Date:" />
+
+  <EditText
+      android:id="@+id/EnterDate"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:ems="10"
+      android:inputType="datetime|date"
+      android:text="Enter Date" />
+
+  <!-- Want to for this only show up in response to user tapping to enter in date
+    <CalendarView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+  -->
+
+ </LinearLayout>
+
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="horizontal">
+
+  <TextView
+      android:id="@+id/Difficulty_add"
+      android:layout_width="158dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:text="Difficulty: " />
+
+  <!-- need to figure how to make this a dropdown -->
+  <EditText
+      android:id="@+id/EnterDifficulty"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:ems="10"
+      android:inputType="textPersonName"
+      android:text="Choose Task Difficulty" />
+
+ </LinearLayout>
+
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+
+     android:layout_alignParentBottom="true"
+     android:layout_alignParentLeft="true"
+     android:layout_alignParentStart="true"
+     android:orientation="horizontal">
+
+
+  <TextView
+      android:id="@+id/Urgency_add"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:text="Urgency: " />
+
+  <!-- need to figure out how to resive rating so all 5 stars show -->
+  <RatingBar
+      android:id="@+id/EnterRating"
+      android:layout_width="109dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1" />
+
+ </LinearLayout>
+
+
+ <RelativeLayout
+     android:layout_width="match_parent"
+     android:layout_height="match_parent">
+
+  <TextView
+      android:id="@+id/Comments_add"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Comments:" />
+
+  <EditText
+      android:id="@+id/enter_comments"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentStart="true"
+      android:layout_below="@+id/Comments"
+      android:layout_marginTop="24dp"
+      android:gravity="top"
+      android:hint="Enter other details here."
+      android:lines="5"
+      android:maxLength="140" />
+
+  <Button
+      android:id="@+id/add_task_button"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:text="Add Task" />
+ </RelativeLayout>
+
+</LinearLayout>

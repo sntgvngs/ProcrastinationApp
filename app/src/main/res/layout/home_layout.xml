@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/header_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="HOME"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <LinearLayout
+        android:id="@+id/home_task_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/nav_buttons"
+        android:layout_below="@+id/header_text"
+        android:orientation="vertical"
+        android:padding="20dp">
+        <include layout="@layout/activity_badge_view"/>
+        <include layout="@layout/activity_badge_view"/>
+        <include layout="@layout/activity_badge_view"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/nav_buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageButton
+                android:id="@+id/view_all_button"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:padding="8dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/icon_view_all" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="View All"
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageButton
+                android:id="@+id/add_new_button"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:padding="8dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/icon_add_task" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Add New"
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>
