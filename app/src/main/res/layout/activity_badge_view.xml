@@ -11,7 +11,7 @@
         android:layout_height="80dp"
         android:padding="8dp"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/icon_assignment" />
+        app:srcCompat="@drawable/icon_event_2_3" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
