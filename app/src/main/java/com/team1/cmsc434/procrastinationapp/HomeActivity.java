@@ -3,8 +3,11 @@ package com.team1.cmsc434.procrastinationapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.Toast;
 
 /**
@@ -14,6 +17,9 @@ import android.widget.Toast;
 public class HomeActivity extends AppCompatActivity {
     private final String TAG = "HOME_ACTIVITY";
 
+    private TaskAdapter mAdapter;
+
+    ListView places;
     ImageButton viewAllButton;
     ImageButton addNewButton;
 
@@ -23,8 +29,22 @@ public class HomeActivity extends AppCompatActivity {
 
         setContentView(R.layout.home_layout);
 
-        viewAllButton = (ImageButton) findViewById(R.id.view_all_button);
-        addNewButton = (ImageButton) findViewById(R.id.add_new_button);
+        places = findViewById(R.id.home_task_list);
+
+        viewAllButton = findViewById(R.id.view_all_button);
+        addNewButton = findViewById(R.id.add_new_button);
+
+        places.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long id) {
+                Task task = (Task) mAdapter.getItem(pos);
+
+                Intent intent = task.packageToIntent();
+
+                intent.setClass(getApplicationContext(),ViewDetails.class);
+                startActivity(intent);
+            }
+        });
 
         viewAllButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,5 +60,8 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        mAdapter = new TaskAdapter(getApplicationContext());
+
+        places.setAdapter(mAdapter);
     }
 }

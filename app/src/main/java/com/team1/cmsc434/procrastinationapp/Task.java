@@ -1,6 +1,7 @@
 package com.team1.cmsc434.procrastinationapp;
 
 import android.arch.persistence.room.*;
+import android.content.Intent;
 
 import java.util.Date;
 
@@ -13,7 +14,6 @@ public class Task{
     public Difficulty difficulty;
     public String name;
 
-    @PrimaryKey
     public Date dueDate;
     public float importance;
     public String details;
@@ -29,5 +29,27 @@ public class Task{
         this.importance = importance;
         this.details = details;
         this.complete = false;
+    }
+
+    public Task(Intent intent) {
+        this.name = intent.getStringExtra("questionID");
+        this.type = Type.valueOf(intent.getStringExtra("answerID"));
+        this.dueDate = new Date(intent.getLongExtra("dueDate",0));
+        this.difficulty = Difficulty.valueOf(intent.getStringExtra("difficulty"));
+        this.importance = intent.getFloatExtra("importance",0);
+        this.details = intent.getStringExtra("details");
+        this.complete = intent.getBooleanExtra("complete", false);
+    }
+
+    public Intent packageToIntent(){
+        Intent intent = new Intent();
+        intent.putExtra("name", name);
+        intent.putExtra("type", type.name());
+        intent.putExtra("dueDate", dueDate.getTime());
+        intent.putExtra("difficulty", difficulty.name());
+        intent.putExtra("importance", importance);
+        intent.putExtra("details", details);
+        intent.putExtra("complete", complete);
+        return intent;
     }
 }

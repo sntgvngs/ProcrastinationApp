@@ -6,7 +6,7 @@
     android:id="@+id/user_badge">
 
     <ImageView
-        android:id="@+id/act_icon"
+        android:id="@+id/task_icon"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:padding="8dp"
@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/act_icon">
+        android:layout_toRightOf="@id/task_icon">
 
         <TextView
             android:layout_width="wrap_content"
@@ -31,13 +31,13 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:text="12/01/2017 at 4:00 PM"/>
+            android:text=""/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_below="@+id/task_type"
-            android:text="Task Name"
+            android:text=""
             android:id="@+id/task_name"/>
         <RatingBar
             android:id="@+id/importance_rating"
