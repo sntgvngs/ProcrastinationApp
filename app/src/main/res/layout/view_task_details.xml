@@ -39,28 +39,15 @@
             android:layout_weight="1"
             android:text="@string/task_name" />
 
-        // see if TextView is better than EditText
-
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/name_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="8dp"
-            android:text="@string/display_name"
+            android:text=""
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <!--
-        <EditText
-            android:id="@+id/display_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:ems="2"
-            android:inputType="textPersonName"
-            android:singleLine="false"
-            android:text="@string/display_name" />
-        -->
     </LinearLayout>
 
     // Type Layout
@@ -78,24 +65,13 @@
             android:layout_weight="1"
             android:text="@string/task_type" />
 
-        <Spinner
-            android:id="@+id/type_dropdown"
+        <TextView
+            android:id="@+id/type_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:entries="@array/type_array"
             android:padding="10dp"
             android:layout_weight="1" />
-
-        <!--
-        <EditText
-            android:id="@+id/display_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="2"
-            android:inputType="textPersonName"
-            android:text="@string/display_type" />
-        -->
 
     </LinearLayout>
 
@@ -114,7 +90,7 @@
             android:text="@string/task_deadline" />
 
         <TextView
-            android:id="@+id/display_deadline"
+            android:id="@+id/deadline_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -122,16 +98,6 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/display_deadline" />
 
-        <!--
-        <EditText
-            android:id="@+id/date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="date"
-            android:text="@string/display_deadline" />
-        -->
     </LinearLayout>
 
     // Difficulty Layout
@@ -148,24 +114,14 @@
             android:layout_weight="1"
             android:text="@string/task_difficulty" />
 
-        <Spinner
-            android:id="@+id/difficulty_dropdown"
+        <TextView
+            android:id="@+id/difficulty_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:entries="@array/difficulty_array"
             android:padding="10dp"
             android:layout_weight="1" />
 
-        <!--
-        <EditText
-            android:id="@+id/display_difficulty"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/task_difficulty" />
-        -->
     </LinearLayout>
 
     // Urgency Layout
@@ -189,7 +145,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:numStars="5"
-            android:rating="0" />
+            android:rating="0"
+            android:isIndicator="true"/>
 
     </LinearLayout>
 
@@ -202,21 +159,16 @@
             android:id="@+id/Comments"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:text="Comments:" />
 
-        <EditText
+        <TextView
             android:id="@+id/details_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
             android:layout_below="@id/Comments"
             android:layout_marginTop="28dp"
             android:gravity="top"
-            android:hint="Enter other details here."
             android:lines="4"
             android:maxLength="140" />
 

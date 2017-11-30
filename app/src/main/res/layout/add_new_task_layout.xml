@@ -98,12 +98,13 @@
             android:layout_weight="1"
             android:text="Importance: " />
 
-  <!-- need to figure out how to receive rating so all 5 stars show -->
         <RatingBar
             android:id="@+id/importance_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:numStars="5"
+            android:stepSize="0.1" />
 
     </LinearLayout>
     <TextView

@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -121,7 +122,7 @@ public class TaskAdapter extends BaseAdapter {
             }
         }
         holder.importance.setRating(curr.importance);
-        holder.date.setText("" + curr.dueDate);
+        holder.date.setText(DateFormat.getDateInstance(DateFormat.MEDIUM).format(curr.dueDate));
         holder.name.setText("" + curr.name);
 
         return newView;

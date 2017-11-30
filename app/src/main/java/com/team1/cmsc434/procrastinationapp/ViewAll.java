@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -35,6 +36,20 @@ public class ViewAll extends AppCompatActivity {
         spec.setContent(R.id.Checklist);
         spec.setIndicator("Checklist");
         host.addTab(spec);
+
+        lview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long id) {
+                Log.d(TAG, "Tapped a list item.");
+                Task task = (Task) mAdapter.getItem(pos);
+
+                Intent intent = task.packageToIntent();
+
+                intent.setClass(getApplicationContext(),ViewDetails.class);
+                startActivity(intent);
+            }
+        });
+
         mAdapter = new CheckAdapter(getApplicationContext());
         lview.setAdapter(mAdapter);
 
@@ -67,8 +82,6 @@ public class ViewAll extends AppCompatActivity {
             fis = openFileInput(HomeActivity.dataFile);
             Scanner scanner = new Scanner(fis);
             scanner.useDelimiter("`"); // ` will separate entries in the file
-//            scanner.next(); // First entry is empty?
-            Log.d(TAG, "Scanner had string: " + scanner.next());
             while(scanner.hasNext())
                 mAdapter.add(new Task(scanner.next()));
             scanner.close();

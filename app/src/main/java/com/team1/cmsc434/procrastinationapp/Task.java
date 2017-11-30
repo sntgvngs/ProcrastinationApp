@@ -2,11 +2,14 @@ package com.team1.cmsc434.procrastinationapp;
 
 import android.arch.persistence.room.*;
 import android.content.Intent;
+import android.util.Log;
 
 import java.util.Date;
 import java.util.Scanner;
 
 public class Task{
+    private final String TAG = "TASK_CLASS";
+
     public enum Type {Assignment, Event}
     public enum Difficulty {Easy, Medium, Hard}
 
@@ -42,12 +45,19 @@ public class Task{
     }
 
     public Task(Intent intent) {
-        this.name = intent.getStringExtra("questionID");
-        this.type = Type.valueOf(intent.getStringExtra("answerID"));
+        Log.d(TAG, "getting name...");
+        this.name = intent.getStringExtra("name");
+        Log.d(TAG, "getting type...");
+        this.type = Type.valueOf(intent.getStringExtra("type"));
+        Log.d(TAG, "getting dueDate...");
         this.dueDate = new Date(intent.getLongExtra("dueDate",0));
+        Log.d(TAG, "getting difficulty...");
         this.difficulty = Difficulty.valueOf(intent.getStringExtra("difficulty"));
+        Log.d(TAG, "getting importance...");
         this.importance = intent.getFloatExtra("importance",0);
+        Log.d(TAG, "getting details...");
         this.details = intent.getStringExtra("details");
+        Log.d(TAG, "getting complete...");
         this.complete = intent.getBooleanExtra("complete", false);
     }
 

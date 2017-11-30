@@ -23,6 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/colorPrimary"
             android:text=""
             android:id="@+id/task_type"/>
         <TextView
@@ -31,12 +32,14 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
+            android:textColor="@color/colorPrimary"
             android:text=""/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_below="@+id/task_type"
+            android:textColor="@color/colorPrimary"
             android:text=""
             android:id="@+id/task_name"/>
         <RatingBar
@@ -56,7 +59,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/task_type"
-            android:text="" />
+            android:text=""
+            android:focusable="false"/>
 
     </RelativeLayout>
 
