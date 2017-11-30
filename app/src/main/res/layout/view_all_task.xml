@@ -29,48 +29,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="400dp">
 
-                <LinearLayout
+                <ListView
                     android:id="@+id/Checklist"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-
-                    <GridLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <CheckBox
-                            android:id="@+id/viewtaskcheck1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_column="0"
-                            android:layout_row="0"
-                            android:text="" />
-
-                        <EditText
-                            android:id="@+id/checklisttask1"
-                            android:layout_width="300dp"
-                            android:layout_height="wrap_content"
-                            android:layout_column="1"
-                            android:layout_row="0"
-                            android:text="Task Name" />
-
-                        <CheckBox
-                            android:id="@+id/viewtaskcheck2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_column="0"
-                            android:layout_row="1"
-                            android:text="" />
-
-                        <EditText
-                            android:id="@+id/checklisttask2"
-                            android:layout_width="300dp"
-                            android:layout_height="wrap_content"
-                            android:layout_column="1"
-                            android:layout_row="1"
-                            android:text="Task Name" />
-                    </GridLayout>
-                </LinearLayout>
+                </ListView>
 
                 <LinearLayout
                     android:id="@+id/Calendar"

@@ -133,6 +133,11 @@ public class TaskAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
+    public void clear(){
+        Log.d(TAG, "Deleting all tasks.");
+        tasks = new ArrayList<Task>();
+    }
+
 //    public void delete(String uid) {
 //        for(int i = 0; i < tasks.size(); i++) {
 //            if (tasks.get(i).id.equals(uid)) {

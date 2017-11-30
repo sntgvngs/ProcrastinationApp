@@ -65,27 +65,12 @@ public class HomeActivity extends AppCompatActivity {
         mAdapter = new TaskAdapter(getApplicationContext());
 
         places.setAdapter(mAdapter);
-
-        FileInputStream fis;
-        try {
-            Log.d(TAG, "Trying to read file.");
-            fis = openFileInput(dataFile);
-            Scanner scanner = new Scanner(fis);
-            scanner.useDelimiter("\\u1337"); // ` will separate entries in the file
-            scanner.next(); // First entry is empty?
-            while(scanner.hasNext())
-                mAdapter.add(new Task(scanner.next()));
-            scanner.close();
-            fis.close();
-            Log.d(TAG, "File read successfully.");
-        } catch (java.io.IOException e) {
-            Log.d(TAG, "Unable to access dataFile. Has user added any tasks?");
-        }
     }
 
     @Override
     public void onStart() {
         super.onStart();
+        mAdapter.clear();
         FileInputStream fis;
         try {
             Log.d(TAG, "Trying to read file.");
