@@ -4,8 +4,8 @@ import android.arch.persistence.room.*;
 import android.content.Intent;
 
 import java.util.Date;
+import java.util.Scanner;
 
-@Entity(tableName = "tasks")
 public class Task{
     public enum Type {Assignment, Event}
     public enum Difficulty {Easy, Medium, Hard}
@@ -19,6 +19,16 @@ public class Task{
     public String details;
 
     public Boolean complete;
+
+    public Task() {
+        this.name = "test";
+        this.type = Type.Assignment;
+        this.dueDate = new Date();
+        this.difficulty = Difficulty.Easy;
+        this.importance = 2.5f;
+        this.details = "some details?";
+        this.complete = false;
+    }
 
     public Task(String name, Type type, Date dueDate, Difficulty difficulty, float importance,
                 String details) {
@@ -41,6 +51,18 @@ public class Task{
         this.complete = intent.getBooleanExtra("complete", false);
     }
 
+    public Task(String ans) {
+        Scanner scan = new Scanner(ans);
+        scan.useDelimiter("~");
+        this.name = scan.next();
+        this.type = Type.valueOf(scan.next());
+        this.dueDate = new Date(Long.parseLong(scan.next()));
+        this.difficulty = Difficulty.valueOf(scan.next());
+        this.importance = Float.parseFloat(scan.next());
+        this.details = scan.next();
+        this.complete = Boolean.parseBoolean(scan.next());
+    }
+
     public Intent packageToIntent(){
         Intent intent = new Intent();
         intent.putExtra("name", name);
@@ -51,5 +73,16 @@ public class Task{
         intent.putExtra("details", details);
         intent.putExtra("complete", complete);
         return intent;
+    }
+
+    public String packageForFile(){
+        String ans = "`" + name;
+        ans += "~" + type.name();
+        ans += "~" + dueDate.getTime();
+        ans += "~" + difficulty.name();
+        ans += "~" + importance;
+        ans += "~" + details;
+        ans += "~" + complete;
+        return ans;
     }
 }

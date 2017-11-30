@@ -10,6 +10,7 @@
         android:text="TextView" />
 
     <TabHost
+        android:id="@+id/tabHost"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -82,11 +83,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
-
                 </LinearLayout>
 
 
             </FrameLayout>
+
 
             <Button
                 android:id="@+id/add_new_button"
@@ -98,6 +99,4 @@
         </LinearLayout>
 
     </TabHost>
-
-
 </LinearLayout>

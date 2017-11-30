@@ -1,12 +1,30 @@
 <resources>
     <string name="app_name">ProcrastinationApp</string>
+
+    // Making a list of string variables to be displayed on XML layout file
+
+    <string name="page_title">Task Details</string>
+    <string name="task_name">Name:</string>
+    <string name="task_type">Type:</string>
+    <string name="task_deadline">Deadline:</string>
+    <string name="task_difficulty">Difficulty:</string>
+    <string name="task_urgency">Urgency:</string>
+
+    <string name="display_name">Task Name Here</string>
+    <string name="display_type">Task Type Here</string>
+    <string name="display_deadline">11/30/17</string>
+    <string name="display_difficulty">Task Difficulty Here</string>
+
+    // String array containing choices for type spinner/dropdown
     <string-array name="type_array">
         <item>Assignment</item>
         <item>Event</item>
     </string-array>
+
+    // String array containing choices for difficulty spinner/dropdown
     <string-array name="difficulty_array">
         <item>Easy</item>
-        <item>Normal</item>
+        <item>Medium</item>
         <item>Hard</item>
     </string-array>
 </resources>

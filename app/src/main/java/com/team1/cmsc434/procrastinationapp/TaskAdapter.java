@@ -1,6 +1,7 @@
 package com.team1.cmsc434.procrastinationapp;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,16 +14,16 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class TaskAdapter extends BaseAdapter {
+    private final String TAG = "TASK_ADAPTER";
     private final long DAY_LENGTH = 86400000;
     private final long WEEK_LENGTH = 604800000;
     private ArrayList<Task> tasks;
-    private static LayoutInflater inflater = null;
     private Context mContext;
 
     public TaskAdapter(Context context) {
         mContext = context;
-        inflater = LayoutInflater.from(mContext);
         tasks = new ArrayList<Task>();
+        tasks.add(new Task());
     }
 
     @Override
@@ -50,6 +51,7 @@ public class TaskAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        LayoutInflater inflater = LayoutInflater.from(mContext);
         View newView = convertView;
         ViewHolder holder;
 
@@ -58,7 +60,7 @@ public class TaskAdapter extends BaseAdapter {
         if (convertView == null) {
             holder = new ViewHolder();
             newView = inflater.inflate(R.layout.task_badge_view, parent, false);
-            holder.icon = newView.findViewById(R.id.act_icon);
+            holder.icon = newView.findViewById(R.id.task_icon);
             holder.name = newView.findViewById(R.id.task_name);
             holder.type = newView.findViewById(R.id.task_type);
             holder.date = newView.findViewById(R.id.task_date);
@@ -126,6 +128,7 @@ public class TaskAdapter extends BaseAdapter {
     }
 
     public void add(Task task){
+        Log.d(TAG, "Adding new task: " + task.name);
         tasks.add(task);
         notifyDataSetChanged();
     }

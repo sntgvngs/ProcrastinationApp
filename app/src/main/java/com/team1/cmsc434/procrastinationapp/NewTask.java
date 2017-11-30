@@ -1,7 +1,10 @@
 package com.team1.cmsc434.procrastinationapp;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Debug;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,6 +12,8 @@ import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -47,12 +52,23 @@ public class NewTask extends AppCompatActivity {
         addTaskButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), taskName.getText(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(), String.valueOf(taskType.getSelectedItem()), Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(), taskDate.getText(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(), String.valueOf(taskDifficulty.getSelectedItem()), Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(), "" + taskImportance.getRating(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(), taskDetails.getText(), Toast.LENGTH_SHORT).show();
+
+                Task adding = new Task(taskName.getText().toString(),
+                        Task.Type.valueOf(String.valueOf(taskType.getSelectedItem())),
+                        new Date(),
+                        Task.Difficulty.valueOf(String.valueOf(taskDifficulty.getSelectedItem())),
+                        taskImportance.getRating(), taskDetails.getText().toString());
+
+                FileOutputStream fos;
+                try {
+                    fos = openFileOutput(HomeActivity.dataFile, Context.MODE_APPEND);
+                    fos.write(adding.packageForFile().getBytes());
+                    fos.close();
+                    Log.d(TAG, "Wrote to datafile.");
+                } catch (java.io.IOException e) {
+                    Log.d(TAG, "Could not write to datafile.");
+                }
+                Toast.makeText(getApplicationContext(), "Task added.", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });

@@ -5,15 +5,29 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
 
-    <EditText
+    <TextView
         android:id="@+id/page_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Task Details" />
+        android:text="@string/page_title"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
+
+    <RelativeLayout
+        android:id="@+id/Spacing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    // Name Layout
     <LinearLayout
+        android:id="@+id/Name_Layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -23,78 +37,126 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Name:" />
+            android:text="@string/task_name" />
 
-        <EditText
-            android:id="@+id/display_name"
-            android:layout_width="98dp"
+        // see if TextView is better than EditText
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:padding="8dp"
+            android:text="@string/display_name"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <!--
+        <EditText
+            android:id="@+id/display_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
             android:ems="2"
             android:inputType="textPersonName"
             android:singleLine="false"
-            android:text="Task Name Here" />
-
+            android:text="@string/display_name" />
+        -->
     </LinearLayout>
 
+    // Type Layout
     <LinearLayout
+        android:id="@+id/Type_Layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
 
         <TextView
             android:id="@+id/Type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Type:" />
+            android:text="@string/task_type" />
 
+        <Spinner
+            android:id="@+id/type_dropdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/type_array"
+            android:padding="10dp"
+            android:layout_weight="1" />
+
+        <!--
         <EditText
             android:id="@+id/display_type"
-            android:layout_width="92dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="2"
             android:inputType="textPersonName"
-            android:text="Task Type Here" />
+            android:text="@string/display_type" />
+        -->
 
     </LinearLayout>
 
+    // Deadline Layout
     <LinearLayout
+        android:id="@+id/Deadline_Layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/deadline"
-            android:layout_width="158dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Deadline:" />
+            android:text="@string/task_deadline" />
 
+        <TextView
+            android:id="@+id/display_deadline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/display_deadline" />
+
+        <!--
         <EditText
-            android:id="@+id/display_deadline_date"
+            android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="datetime|date"
-            android:text="11/9/17" />
-
+            android:inputType="date"
+            android:text="@string/display_deadline" />
+        -->
     </LinearLayout>
 
+    // Difficulty Layout
     <LinearLayout
+        android:id="@+id/Difficulty_Layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/Difficulty"
-            android:layout_width="158dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Difficulty: " />
+            android:text="@string/task_difficulty" />
 
+        <Spinner
+            android:id="@+id/difficulty_dropdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/difficulty_array"
+            android:padding="10dp"
+            android:layout_weight="1" />
+
+        <!--
         <EditText
             android:id="@+id/display_difficulty"
             android:layout_width="wrap_content"
@@ -102,17 +164,15 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Task Difficulty Here" />
-
+            android:text="@string/task_difficulty" />
+        -->
     </LinearLayout>
 
+    // Urgency Layout
     <LinearLayout
+        android:id="@+id/Urgency_Layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:orientation="horizontal">
 
 
@@ -121,17 +181,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Urgency: " />
+            android:text="@string/task_urgency" />
 
         <RatingBar
             android:id="@+id/ratingBar"
-            android:layout_width="109dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:numStars="5"
+            android:rating="0" />
 
     </LinearLayout>
 
-
+    // Comments Layout
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -140,6 +202,9 @@
             android:id="@+id/Comments"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:text="Comments:" />
 
         <EditText
@@ -148,8 +213,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/Comments"
-            android:layout_marginTop="24dp"
+            android:layout_below="@id/Comments"
+            android:layout_marginTop="28dp"
             android:gravity="top"
             android:hint="Enter other details here."
             android:lines="4"
@@ -158,8 +223,7 @@
         <CheckBox
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_below="@id/details_field"
             android:text="Task Complete" />
     </RelativeLayout>
-
 </LinearLayout>

@@ -19,9 +19,6 @@
         android:layout_below="@+id/header_text"
         android:orientation="vertical"
         android:padding="20dp">
-        <include layout="@layout/task_badge_view"/>
-        <include layout="@layout/task_badge_view"/>
-        <include layout="@layout/task_badge_view"/>
     </ListView>
     <LinearLayout
         android:id="@+id/nav_buttons"

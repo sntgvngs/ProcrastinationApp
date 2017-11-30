@@ -10,12 +10,14 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
-/**
- * Created by Santiago Vanegas Marino on 11/8/2017.
- */
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class HomeActivity extends AppCompatActivity {
     private final String TAG = "HOME_ACTIVITY";
+    public static final String dataFile = "taskData.txt";
 
     private TaskAdapter mAdapter;
 
@@ -63,5 +65,42 @@ public class HomeActivity extends AppCompatActivity {
         mAdapter = new TaskAdapter(getApplicationContext());
 
         places.setAdapter(mAdapter);
+
+        FileInputStream fis;
+        try {
+            Log.d(TAG, "Trying to read file.");
+            fis = openFileInput(dataFile);
+            Scanner scanner = new Scanner(fis);
+            scanner.useDelimiter("\\u1337"); // ` will separate entries in the file
+            scanner.next(); // First entry is empty?
+            while(scanner.hasNext())
+                mAdapter.add(new Task(scanner.next()));
+            scanner.close();
+            fis.close();
+            Log.d(TAG, "File read successfully.");
+        } catch (java.io.IOException e) {
+            Log.d(TAG, "Unable to access dataFile. Has user added any tasks?");
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        FileInputStream fis;
+        try {
+            Log.d(TAG, "Trying to read file.");
+            fis = openFileInput(dataFile);
+            Scanner scanner = new Scanner(fis);
+            scanner.useDelimiter("`"); // ` will separate entries in the file
+//            scanner.next(); // First entry is empty?
+            Log.d(TAG, "Scanner had string: " + scanner.next());
+            while(scanner.hasNext())
+                mAdapter.add(new Task(scanner.next()));
+            scanner.close();
+            fis.close();
+            Log.d(TAG, "File read successfully.");
+        } catch (java.io.IOException e) {
+            Log.d(TAG, "Unable to access dataFile. Has user added any tasks?");
+        }
     }
 }
