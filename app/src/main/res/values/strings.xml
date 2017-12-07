@@ -6,9 +6,9 @@
     <string name="page_title">Task Details</string>
     <string name="task_name">Name:</string>
     <string name="task_type">Type:</string>
-    <string name="task_deadline">Deadline:</string>
+    <string name="task_deadline">Date:</string>
     <string name="task_difficulty">Difficulty:</string>
-    <string name="task_urgency">Urgency:</string>
+    <string name="task_urgency">Importance:</string>
 
     <string name="display_name">Task Name Here</string>
     <string name="display_type">Task Type Here</string>

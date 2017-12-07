@@ -11,8 +11,8 @@
         android:layout_height="wrap_content"
         android:text="@string/page_title"
         android:textAlignment="center"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+        android:textStyle="bold" />
 
     <RelativeLayout
         android:id="@+id/Spacing"
@@ -20,137 +20,217 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/blank_spacing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
     </RelativeLayout>
 
-    // Name Layout
     <LinearLayout
-        android:id="@+id/Name_Layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/Name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/task_name" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.75"
+            android:orientation="vertical">
+            <!--
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="5dp"
+                android:text="@string/task_name"
+                android:textAlignment="gravity"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
 
-        <TextView
-            android:id="@+id/name_details"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="5dp"
+                android:text="@string/task_type"
+                android:textAlignment="gravity"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+
+            <TextView
+                android:id="@+id/deadline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="5dp"
+                android:text="@string/task_deadline"
+                android:textAlignment="gravity"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+
+
+            <TextView
+                android:id="@+id/spacing_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/difficulty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="5dp"
+                android:text="@string/task_difficulty"
+                android:textAlignment="gravity"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+
+            <TextView
+                android:id="@+id/importance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="10dp"
+                android:text="@string/task_urgency"
+                android:textAlignment="gravity"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+
+              -->
+            <TextView
+                android:id="@+id/name"
+                android:gravity="right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:text="@string/task_name"
+                android:textAlignment="gravity"
+                android:padding="5dp"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+
+            <TextView
+                android:id="@+id/type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/name"
+                android:text="@string/task_type"
+                android:padding="5dp"
+                android:gravity="right"
+                android:textAlignment="gravity"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/type"
+                android:gravity="right"
+                android:padding="5dp"
+                android:text="@string/task_deadline"
+                android:textAlignment="gravity"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+
+            <TextView
+                android:id="@+id/difficulty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/importance"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="11dp"
+                android:gravity="right"
+                android:padding="5dp"
+                android:text="@string/task_difficulty"
+                android:textAlignment="gravity"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+
+            <TextView
+                android:id="@+id/importance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="12dp"
+                android:padding="5dp"
+                android:text="@string/task_urgency"
+                android:gravity="right"
+                android:textAlignment="gravity"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:padding="8dp"
-            android:text=""
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/name_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:hint="Name Goes Here"
+                android:padding="5dp"
+                android:text=""
+                android:textAlignment="gravity"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+
+            <TextView
+                android:id="@+id/type_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:gravity="left"
+                android:hint="Type Goes Here"
+                android:padding="5dp"
+                android:textAlignment="gravity"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+
+            <TextView
+                android:id="@+id/deadline_details"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:gravity="left"
+                android:hint="Date Goes Here"
+                android:padding="5dp"
+                android:text=""
+                android:textAlignment="gravity"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+
+
+            <TextView
+                android:id="@+id/difficulty_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:hint="Difficulty Goes Here"
+                android:padding="4dp"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
 
     </LinearLayout>
 
-    // Type Layout
-    <LinearLayout
-        android:id="@+id/Type_Layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-
-        <TextView
-            android:id="@+id/Type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/task_type" />
-
-        <TextView
-            android:id="@+id/type_details"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:entries="@array/type_array"
-            android:padding="10dp"
-            android:layout_weight="1" />
-
-    </LinearLayout>
-
-    // Deadline Layout
-    <LinearLayout
-        android:id="@+id/Deadline_Layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/deadline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/task_deadline" />
-
-        <TextView
-            android:id="@+id/deadline_details"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="8dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/display_deadline" />
-
-    </LinearLayout>
-
-    // Difficulty Layout
-    <LinearLayout
-        android:id="@+id/Difficulty_Layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/Difficulty"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/task_difficulty" />
-
-        <TextView
-            android:id="@+id/difficulty_details"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:entries="@array/difficulty_array"
-            android:padding="10dp"
-            android:layout_weight="1" />
-
-    </LinearLayout>
-
-    // Urgency Layout
-    <LinearLayout
-        android:id="@+id/Urgency_Layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-
-        <TextView
-            android:id="@+id/Urgency"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/task_urgency" />
-
-        <RatingBar
-            android:id="@+id/ratingBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:numStars="5"
-            android:rating="0"
-            android:isIndicator="true"/>
-
-    </LinearLayout>
-
-    // Comments Layout
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -160,22 +240,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:text="Comments:" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="17dp"
+            android:text="Comments"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
 
         <TextView
             android:id="@+id/details_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/Comments"
-            android:layout_marginTop="28dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
             android:gravity="top"
-            android:lines="4"
-            android:maxLength="140" />
+            android:lines="5"
+            android:maxLength="140"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
 
         <CheckBox
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/details_field"
-            android:text="Task Complete" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/details_field"
+            android:text="Task Complete"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+
     </RelativeLayout>
 </LinearLayout>

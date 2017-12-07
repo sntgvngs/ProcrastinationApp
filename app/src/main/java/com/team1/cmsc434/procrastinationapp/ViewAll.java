@@ -29,12 +29,12 @@ public class ViewAll extends AppCompatActivity {
 
         TabHost host = (TabHost) findViewById(R.id.tabHost);
         host.setup();
-        lview = findViewById(R.id.Checklist);
+        lview = findViewById(R.id.All);
 
         //Tab 1
-        TabHost.TabSpec spec = host.newTabSpec("Checklist");
-        spec.setContent(R.id.Checklist);
-        spec.setIndicator("Checklist");
+        TabHost.TabSpec spec = host.newTabSpec("All");
+        spec.setContent(R.id.All);
+        spec.setIndicator("All");
         host.addTab(spec);
 
         lview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -55,9 +55,15 @@ public class ViewAll extends AppCompatActivity {
 
 
         //Tab 2
-        spec = host.newTabSpec("Calendar");
-        spec.setContent(R.id.Calendar);
-        spec.setIndicator("Calendar");
+        spec = host.newTabSpec("Date");
+        spec.setContent(R.id.Date);
+        spec.setIndicator("Date");
+        host.addTab(spec);
+
+        //Tab 3
+        spec = host.newTabSpec("Importance");
+        spec.setContent(R.id.Importance);
+        spec.setIndicator("Importance");
         host.addTab(spec);
 
 
