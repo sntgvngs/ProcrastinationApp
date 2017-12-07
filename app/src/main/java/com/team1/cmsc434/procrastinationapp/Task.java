@@ -4,6 +4,7 @@ import android.arch.persistence.room.*;
 import android.content.Intent;
 import android.util.Log;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -38,6 +39,17 @@ public class Task{
         this.name = name;
         this.type = type;
         this.dueDate = dueDate;
+        this.difficulty = difficulty;
+        this.importance = importance;
+        this.details = details;
+        this.complete = false;
+    }
+
+    public Task(String name, Type type, Calendar dueDate, Difficulty difficulty, float importance,
+                String details) {
+        this.name = name;
+        this.type = type;
+        this.dueDate = dueDate.getTime();
         this.difficulty = difficulty;
         this.importance = importance;
         this.details = details;

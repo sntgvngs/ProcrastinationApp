@@ -76,49 +76,49 @@ public class TaskAdapter extends BaseAdapter {
             holder.type.setText(Task.Type.Assignment.name());
             if(curr.dueDate.getTime() - now.getTime() < DAY_LENGTH) {
                 if(curr.difficulty == Task.Difficulty.Easy)
-                    holder.icon.setImageResource(R.drawable.icon_task_1_3);
+                    holder.icon.setImageResource(R.drawable.icon_task_3_1);
                 else if(curr.difficulty == Task.Difficulty.Medium)
-                    holder.icon.setImageResource(R.drawable.icon_task_2_3);
+                    holder.icon.setImageResource(R.drawable.icon_task_3_2);
                 else// curr.difficulty == Task.Difficulty.Hard
                     holder.icon.setImageResource(R.drawable.icon_task_3_3);
             } else if(curr.dueDate.getTime() - now.getTime() <  WEEK_LENGTH) {
                 if(curr.difficulty == Task.Difficulty.Easy)
-                    holder.icon.setImageResource(R.drawable.icon_task_1_2);
+                    holder.icon.setImageResource(R.drawable.icon_task_2_1);
                 else if(curr.difficulty == Task.Difficulty.Medium)
                     holder.icon.setImageResource(R.drawable.icon_task_2_2);
                 else// curr.difficulty == Task.Difficulty.Hard
-                    holder.icon.setImageResource(R.drawable.icon_task_3_2);
+                    holder.icon.setImageResource(R.drawable.icon_task_2_3);
             } else {
                 if(curr.difficulty == Task.Difficulty.Easy)
                     holder.icon.setImageResource(R.drawable.icon_task_1_1);
                 else if(curr.difficulty == Task.Difficulty.Medium)
-                    holder.icon.setImageResource(R.drawable.icon_task_2_1);
+                    holder.icon.setImageResource(R.drawable.icon_task_1_2);
                 else// curr.difficulty == Task.Difficulty.Hard
-                    holder.icon.setImageResource(R.drawable.icon_task_3_1);
+                    holder.icon.setImageResource(R.drawable.icon_task_1_3);
             }
         } else {
             holder.type.setText(Task.Type.Event.name());
             if(curr.dueDate.getTime() - now.getTime() < DAY_LENGTH) {
                 if(curr.difficulty == Task.Difficulty.Easy)
-                    holder.icon.setImageResource(R.drawable.icon_event_1_3);
+                    holder.icon.setImageResource(R.drawable.icon_event_3_1);
                 else if(curr.difficulty == Task.Difficulty.Medium)
-                    holder.icon.setImageResource(R.drawable.icon_event_2_3);
+                    holder.icon.setImageResource(R.drawable.icon_event_3_2);
                 else// curr.difficulty == Task.Difficulty.Hard
                     holder.icon.setImageResource(R.drawable.icon_event_3_3);
             } else if(curr.dueDate.getTime() - now.getTime() <  WEEK_LENGTH) {
                 if(curr.difficulty == Task.Difficulty.Easy)
-                    holder.icon.setImageResource(R.drawable.icon_event_1_2);
+                    holder.icon.setImageResource(R.drawable.icon_event_2_1);
                 else if(curr.difficulty == Task.Difficulty.Medium)
                     holder.icon.setImageResource(R.drawable.icon_event_2_2);
                 else// curr.difficulty == Task.Difficulty.Hard
-                    holder.icon.setImageResource(R.drawable.icon_event_3_2);
+                    holder.icon.setImageResource(R.drawable.icon_event_2_3);
             } else {
                 if(curr.difficulty == Task.Difficulty.Easy)
                     holder.icon.setImageResource(R.drawable.icon_event_1_1);
                 else if(curr.difficulty == Task.Difficulty.Medium)
-                    holder.icon.setImageResource(R.drawable.icon_event_2_1);
+                    holder.icon.setImageResource(R.drawable.icon_event_1_2);
                 else// curr.difficulty == Task.Difficulty.Hard
-                    holder.icon.setImageResource(R.drawable.icon_event_3_1);
+                    holder.icon.setImageResource(R.drawable.icon_event_1_3);
             }
         }
         holder.importance.setRating(curr.importance);
@@ -138,14 +138,4 @@ public class TaskAdapter extends BaseAdapter {
         Log.d(TAG, "Deleting all tasks.");
         tasks = new ArrayList<Task>();
     }
-
-//    public void delete(String uid) {
-//        for(int i = 0; i < tasks.size(); i++) {
-//            if (tasks.get(i).id.equals(uid)) {
-//                advisers.remove(i);
-//                notifyDataSetChanged();
-//                return;
-//            }
-//        }
-//    }
 }
