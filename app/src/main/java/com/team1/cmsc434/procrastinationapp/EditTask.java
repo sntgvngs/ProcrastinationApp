@@ -40,6 +40,7 @@ EditTask extends AppCompatActivity {
     Button updateTaskButton;
 
     Calendar myCalendar;
+    ArrayList<Task> others;
 
     DatePickerDialog.OnDateSetListener dateListener;
 
@@ -60,36 +61,17 @@ EditTask extends AppCompatActivity {
 
         updateTaskButton = findViewById(R.id.update_task_button);
 
-        final Task task = new Task(getIntent());
+        Task original = new Task(getIntent());
+        others = otherTasks(original);
 
-        myCalendar.set(Calendar.YEAR, task.dueDate.getYear() + 1900);
-        myCalendar.set(Calendar.MONTH, task.dueDate.getMonth());
-        myCalendar.set(Calendar.DAY_OF_MONTH, task.dueDate.getDate());
 
-        taskName.setText(task.name);
-        //taskType.setEn(task.type.name());
-        taskDate.setText(task.dueDate.toString());
-        //taskDifficulty.setText(task.difficulty.name());
-        taskImportance.setRating(task.importance);
-        taskDetails.setText(task.details);
+        myCalendar.setTime(original.dueDate);
 
-        String compareValue = task.type.name();
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.type_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        taskType.setAdapter(adapter);
-        if (!compareValue.equals(null)) {
-            int spinnerPosition = adapter.getPosition(compareValue);
-            taskType.setSelection(spinnerPosition);
-        }
-
-        String compareValue2 = task.difficulty.name();
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.difficulty_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        taskDifficulty.setAdapter(adapter2);
-        if (!compareValue2.equals(null)) {
-            int spinnerPosition = adapter2.getPosition(compareValue2);
-            taskDifficulty.setSelection(spinnerPosition);
-        }
+        taskName.setText(original.name);
+        taskType.setSelection(original.type.ordinal());
+        taskDifficulty.setSelection(original.difficulty.ordinal());
+        taskImportance.setRating(original.importance);
+        taskDetails.setText(original.details);
 
         updateLabel();
 
@@ -131,92 +113,22 @@ EditTask extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(taskName.getText().toString() != "") {
-                    /*int taskPos = findTaskPos(task.name);
-                    TaskAdapter.tasks.remove(taskPos);
-                    TaskAdapter.tasks.add(taskPos,new Task(taskName.getText().toString(),
+                    others.add(new Task(taskName.getText().toString(),
                             Task.Type.valueOf(String.valueOf(taskType.getSelectedItem())),
                             myCalendar,
                             Task.Difficulty.valueOf(String.valueOf(taskDifficulty.getSelectedItem())),
-                            taskImportance.getRating(), taskDetails.getText().toString()));*/
-
-                    ArrayList<Task> currentTasks = new ArrayList<Task>();
-
-                    FileInputStream fis;
-                    try {
-                        fis = openFileInput(HomeActivity.dataFile);
-                        Scanner scanner = new Scanner(fis);
-                        scanner.useDelimiter("`"); // ` will separate entries in the file
-                        while(scanner.hasNext())
-                            currentTasks.add(new Task(scanner.next()));
-                        scanner.close();
-                        fis.close();
-                    } catch (java.io.IOException e) {
-                        Log.d(TAG, "Unable to access dataFile. Has user added any tasks?");
-                    }
-
-                    int index = 0;
-
-                    for (Task t: currentTasks) {
-                        if(t.name.equals(task.name))
-                            break;
-                        index++;
-                    }
-
-                    currentTasks.remove(index);
-
-                    Task updateTask = new Task(taskName.getText().toString(),
-                            Task.Type.valueOf(String.valueOf(taskType.getSelectedItem())),
-                            myCalendar,
-                            Task.Difficulty.valueOf(String.valueOf(taskDifficulty.getSelectedItem())),
-                            taskImportance.getRating(), taskDetails.getText().toString());
-                    Intent intent = updateTask.packageToIntent();
-
-                    currentTasks.add(index, updateTask);
+                            taskImportance.getRating(), taskDetails.getText().toString()));
 
                     FileOutputStream fos;
                     try {
                         fos = openFileOutput(HomeActivity.dataFile, Context.MODE_PRIVATE);
-                        fos.close();
-                    } catch (Exception E){
-                        // ;)
-                    }
-
-                    for (Task t: currentTasks) {
-                        try {
-                            fos = openFileOutput(HomeActivity.dataFile, Context.MODE_APPEND);
+                        for (Task t: others)
                             fos.write(t.packageForFile().getBytes());
-                            fos.close();
-                            Log.d(TAG, "Wrote to datafile.");
-                        } catch (java.io.IOException e) {
-                            Log.d(TAG, "Could not write to datafile.");
-                        }
-                    }
-
-                    //intent.setClass(getApplicationContext(),ViewDetails.class);
-                    //startActivity(intent);
-
-                    /*task.name = taskName.getText().toString();
-                    task.type = Task.Type.valueOf(String.valueOf(taskType.getSelectedItem()));
-                    task.dueDate = myCalendar.getTime();
-                    task.difficulty = Task.Difficulty.valueOf(String.valueOf(taskDifficulty.getSelectedItem()));
-                    task.importance = taskImportance.getRating();
-                    task.details = taskDetails.getText().toString();*/
-
-                    /*task.se
-                    Task adding = new Task(taskName.getText().toString(),
-                            Task.Type.valueOf(String.valueOf(taskType.getSelectedItem())),
-                            myCalendar,
-                            Task.Difficulty.valueOf(String.valueOf(taskDifficulty.getSelectedItem())),
-                            taskImportance.getRating(), taskDetails.getText().toString());
-                    FileOutputStream fos;
-                    try {
-                        fos = openFileOutput(HomeActivity.dataFile, Context.MODE_APPEND);
-                        fos.write(adding.packageForFile().getBytes());
                         fos.close();
                         Log.d(TAG, "Wrote to datafile.");
                     } catch (java.io.IOException e) {
                         Log.d(TAG, "Could not write to datafile.");
-                    }*/
+                    }
                     Toast.makeText(getApplicationContext(), "Task updated.", Toast.LENGTH_SHORT).show();
                     finish();
                 }
@@ -229,5 +141,26 @@ EditTask extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         taskDate.setText(sdf.format(myCalendar.getTime()));
+    }
+
+    private ArrayList<Task> otherTasks(Task orig) {
+        ArrayList<Task> tasks = new ArrayList<>();
+        FileInputStream fis;
+        try {
+            fis = openFileInput(HomeActivity.dataFile);
+            Scanner scanner = new Scanner(fis);
+            scanner.useDelimiter("`"); // ` will separate entries in the file
+            while(scanner.hasNext()) {
+                Task t = new Task(scanner.next());
+                if(!t.equals(orig))
+                    tasks.add(t);
+            }
+            scanner.close();
+            fis.close();
+        } catch (java.io.IOException e) {
+            Log.d(TAG, "Unable to access dataFile. Has user added any tasks?");
+        }
+
+        return tasks;
     }
 }

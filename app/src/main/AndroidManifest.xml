@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".NewTask"
             android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".EditTask"
+            android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".ViewDetails"/>
         <activity android:name=".ViewAll"/>
     </application>

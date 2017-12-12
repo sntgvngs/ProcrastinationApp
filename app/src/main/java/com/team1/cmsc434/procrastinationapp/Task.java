@@ -107,4 +107,17 @@ public class Task{
         ans += "~" + complete;
         return ans;
     }
+
+    public boolean equals(Object o){
+        Task other = (Task) o;
+        if(this.name.equals(other.name))
+            if(this.type.equals(other.type))
+                if(this.dueDate.equals(other.dueDate))
+                    if(this.difficulty.equals(other.difficulty))
+                        if(this.importance == other.importance)
+                            if(this.details.equals(other.details))
+                                if(this.complete.equals(other.complete))
+                                    return true;
+        return false;
+    }
 }

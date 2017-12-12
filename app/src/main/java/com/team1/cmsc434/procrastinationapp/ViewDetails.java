@@ -2,6 +2,7 @@ package com.team1.cmsc434.procrastinationapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Debug;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -26,6 +27,8 @@ public class ViewDetails extends AppCompatActivity {
     TextView taskDetails;
     Button editTaskButton;
 
+    Task task;
+
     @Override
     public void onCreate(Bundle savedInstanceStance) {
         super.onCreate(savedInstanceStance);
@@ -39,7 +42,7 @@ public class ViewDetails extends AppCompatActivity {
         taskDetails = findViewById(R.id.details_field);
         editTaskButton = findViewById(R.id.edittask);
 
-        Task task = new Task(getIntent());
+        task = new Task(getIntent());
 
         taskName.setText(task.name);
         taskType.setText(task.type.name());
@@ -51,12 +54,13 @@ public class ViewDetails extends AppCompatActivity {
         editTaskButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Task task = new Task(getIntent());
+                Log.d(TAG, "edit1");
                 Intent intent = task.packageToIntent();
 
+                Log.d(TAG, "edit2");
                 intent.setClass(getApplicationContext(),EditTask.class);
+                Log.d(TAG, "edit3");
                 startActivity(intent);
-                //startActivity(new Intent(getApplicationContext(), EditTask.class));
             }
         });
     }
