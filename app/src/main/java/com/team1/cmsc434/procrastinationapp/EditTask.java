@@ -1,8 +1,11 @@
 package com.team1.cmsc434.procrastinationapp;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -15,9 +18,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Scanner;
 
 public class
 EditTask extends AppCompatActivity {
@@ -55,7 +62,7 @@ EditTask extends AppCompatActivity {
 
         final Task task = new Task(getIntent());
 
-        myCalendar.set(Calendar.YEAR, task.dueDate.getYear());
+        myCalendar.set(Calendar.YEAR, task.dueDate.getYear() + 1900);
         myCalendar.set(Calendar.MONTH, task.dueDate.getMonth());
         myCalendar.set(Calendar.DAY_OF_MONTH, task.dueDate.getDate());
 
@@ -124,12 +131,76 @@ EditTask extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(taskName.getText().toString() != "") {
-                    task.name = taskName.getText().toString();
+                    /*int taskPos = findTaskPos(task.name);
+                    TaskAdapter.tasks.remove(taskPos);
+                    TaskAdapter.tasks.add(taskPos,new Task(taskName.getText().toString(),
+                            Task.Type.valueOf(String.valueOf(taskType.getSelectedItem())),
+                            myCalendar,
+                            Task.Difficulty.valueOf(String.valueOf(taskDifficulty.getSelectedItem())),
+                            taskImportance.getRating(), taskDetails.getText().toString()));*/
+
+                    ArrayList<Task> currentTasks = new ArrayList<Task>();
+
+                    FileInputStream fis;
+                    try {
+                        fis = openFileInput(HomeActivity.dataFile);
+                        Scanner scanner = new Scanner(fis);
+                        scanner.useDelimiter("`"); // ` will separate entries in the file
+                        while(scanner.hasNext())
+                            currentTasks.add(new Task(scanner.next()));
+                        scanner.close();
+                        fis.close();
+                    } catch (java.io.IOException e) {
+                        Log.d(TAG, "Unable to access dataFile. Has user added any tasks?");
+                    }
+
+                    int index = 0;
+
+                    for (Task t: currentTasks) {
+                        if(t.name.equals(task.name))
+                            break;
+                        index++;
+                    }
+
+                    currentTasks.remove(index);
+
+                    Task updateTask = new Task(taskName.getText().toString(),
+                            Task.Type.valueOf(String.valueOf(taskType.getSelectedItem())),
+                            myCalendar,
+                            Task.Difficulty.valueOf(String.valueOf(taskDifficulty.getSelectedItem())),
+                            taskImportance.getRating(), taskDetails.getText().toString(), "false");
+                    Intent intent = updateTask.packageToIntent();
+
+                    currentTasks.add(index, updateTask);
+
+                    FileOutputStream fos;
+                    try {
+                        fos = openFileOutput(HomeActivity.dataFile, Context.MODE_PRIVATE);
+                        fos.close();
+                    } catch (Exception E){
+                        // ;)
+                    }
+
+                    for (Task t: currentTasks) {
+                        try {
+                            fos = openFileOutput(HomeActivity.dataFile, Context.MODE_APPEND);
+                            fos.write(t.packageForFile().getBytes());
+                            fos.close();
+                            Log.d(TAG, "Wrote to datafile.");
+                        } catch (java.io.IOException e) {
+                            Log.d(TAG, "Could not write to datafile.");
+                        }
+                    }
+
+                    //intent.setClass(getApplicationContext(),ViewDetails.class);
+                    //startActivity(intent);
+
+                    /*task.name = taskName.getText().toString();
                     task.type = Task.Type.valueOf(String.valueOf(taskType.getSelectedItem()));
                     task.dueDate = myCalendar.getTime();
                     task.difficulty = Task.Difficulty.valueOf(String.valueOf(taskDifficulty.getSelectedItem()));
                     task.importance = taskImportance.getRating();
-                    task.details = taskDetails.getText().toString();
+                    task.details = taskDetails.getText().toString();*/
 
                     /*task.se
                     Task adding = new Task(taskName.getText().toString(),
