@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NewTask"/>
+        <activity android:name=".NewTask"
+            android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".ViewDetails"/>
         <activity android:name=".ViewAll"/>
     </application>

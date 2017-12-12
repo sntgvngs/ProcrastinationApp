@@ -168,7 +168,7 @@ EditTask extends AppCompatActivity {
                             Task.Type.valueOf(String.valueOf(taskType.getSelectedItem())),
                             myCalendar,
                             Task.Difficulty.valueOf(String.valueOf(taskDifficulty.getSelectedItem())),
-                            taskImportance.getRating(), taskDetails.getText().toString(), "false");
+                            taskImportance.getRating(), taskDetails.getText().toString());
                     Intent intent = updateTask.packageToIntent();
 
                     currentTasks.add(index, updateTask);
