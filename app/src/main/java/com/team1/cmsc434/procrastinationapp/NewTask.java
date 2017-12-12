@@ -26,10 +26,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-/**
- * Created by Santiago Vanegas Marino on 11/8/2017.
- */
-
 public class NewTask extends AppCompatActivity {
     private final String TAG = "NEW_TASK_ACTIVITY";
 

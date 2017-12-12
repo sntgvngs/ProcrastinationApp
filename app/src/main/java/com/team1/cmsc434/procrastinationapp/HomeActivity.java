@@ -15,6 +15,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class HomeActivity extends AppCompatActivity {
@@ -95,5 +96,23 @@ public class HomeActivity extends AppCompatActivity {
         } catch (java.io.IOException e) {
             Log.d(TAG, "Unable to access dataFile. Has user added any tasks?");
         }
+    }
+
+    private ArrayList<Task> getTasks() {
+        ArrayList<Task> tasks = new ArrayList<>();
+        FileInputStream fis;
+        try {
+            fis = openFileInput(HomeActivity.dataFile);
+            Scanner scanner = new Scanner(fis);
+            scanner.useDelimiter("`"); // ` will separate entries in the file
+            while(scanner.hasNext())
+                tasks.add(new Task(scanner.next()));
+            scanner.close();
+            fis.close();
+        } catch (java.io.IOException e) {
+            Log.d(TAG, "Unable to access dataFile. Has user added any tasks?");
+        }
+
+        return tasks;
     }
 }

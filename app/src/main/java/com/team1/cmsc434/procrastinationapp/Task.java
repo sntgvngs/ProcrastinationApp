@@ -8,7 +8,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
-public class Task{
+public class Task implements Comparable<Task> {
     private final String TAG = "TASK_CLASS";
 
     public enum Type {Assignment, Event}
@@ -119,5 +119,9 @@ public class Task{
                                 if(this.complete.equals(other.complete))
                                     return true;
         return false;
+    }
+
+    @Override public int compareTo(Task other){
+        return this.dueDate.compareTo(other.dueDate);
     }
 }

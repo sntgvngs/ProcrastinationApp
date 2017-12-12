@@ -137,5 +137,6 @@ public class TaskAdapter extends BaseAdapter {
     public void clear(){
         Log.d(TAG, "Deleting all tasks.");
         tasks = new ArrayList<Task>();
+        notifyDataSetChanged();
     }
 }
