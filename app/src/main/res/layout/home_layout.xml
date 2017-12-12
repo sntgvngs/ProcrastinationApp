@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:text="HOME"
         android:textAlignment="center"
+        android:textSize="22sp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
     <ListView
         android:id="@+id/home_task_list"
