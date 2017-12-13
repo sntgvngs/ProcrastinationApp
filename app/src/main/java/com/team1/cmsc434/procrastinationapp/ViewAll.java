@@ -72,20 +72,35 @@ public class ViewAll extends AppCompatActivity {
 
         //Tab 1
         TabHost.TabSpec spec = host.newTabSpec("All");
+        TextView A = new TextView(this);
+        A.setTextSize(20);
+        A.setText("All");
+        A.setGravity(Gravity.CENTER);
+        A.setPadding(20,20,20,20);
         spec.setContent(R.id.All);
-        spec.setIndicator("All");
+        spec.setIndicator(A);
         host.addTab(spec);
 
         //Tab 2
         spec = host.newTabSpec("Date");
+        TextView B = new TextView(this);
+        B.setTextSize(20);
+        B.setText("Date");
+        B.setPadding(20,20,20,20);
+        B.setGravity(Gravity.CENTER);
         spec.setContent(R.id.Date);
-        spec.setIndicator("Date");
+        spec.setIndicator(B);
         host.addTab(spec);
 
         //Tab 3
         spec = host.newTabSpec("Importance");
+        TextView C = new TextView(this);
+        C.setTextSize(20);
+        C.setPadding(20,20,20,20);
+        C.setText("Importance");
+        C.setGravity(Gravity.CENTER);
         spec.setContent(R.id.Importance);
-        spec.setIndicator("Importance");
+        spec.setIndicator(C);
         host.addTab(spec);
 
         allAdapter = new TaskAdapter(getApplicationContext());
