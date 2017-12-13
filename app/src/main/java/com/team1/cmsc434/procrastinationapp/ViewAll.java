@@ -3,6 +3,7 @@ package com.team1.cmsc434.procrastinationapp;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Debug;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -66,6 +68,7 @@ public class ViewAll extends AppCompatActivity {
         startDate = Calendar.getInstance();
         endDate = Calendar.getInstance();
         endDate.add(Calendar.MONTH, 1);
+        updateLabels();
 
         //Tab 1
         TabHost.TabSpec spec = host.newTabSpec("All");
@@ -141,6 +144,7 @@ public class ViewAll extends AppCompatActivity {
                 startDate.set(Calendar.MONTH, monthOfYear);
                 startDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 updateLabels();
+                refreshAdapters();
             }
 
         };
@@ -154,6 +158,7 @@ public class ViewAll extends AppCompatActivity {
                 endDate.set(Calendar.MONTH, monthOfYear);
                 endDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 updateLabels();
+                refreshAdapters();
             }
 
         };
@@ -227,7 +232,8 @@ public class ViewAll extends AppCompatActivity {
 
         for(Task t:tasks){
             allAdapter.add(t);
-            if(startDate.before(t.dueDate) && t.dueDate.before(endDate.getTime()))
+            Date dayBeforeStart = new Date(startDate.getTimeInMillis() + TaskAdapter.DAY_LENGTH);
+            if(dayBeforeStart.before(t.dueDate) && t.dueDate.before(endDate.getTime()))
                 dateAdapter.add(t);
             if(t.importance >= minRating.getRating())
                 importanceAdapter.add(t);
@@ -235,6 +241,7 @@ public class ViewAll extends AppCompatActivity {
     }
 
     private void updateLabels() {
+        Log.d(TAG, "updating date");
         String myFormat = "MM/dd/yy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 

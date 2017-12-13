@@ -16,7 +16,7 @@ import java.util.Date;
 
 public class TaskAdapter extends BaseAdapter {
     private final String TAG = "TASK_ADAPTER";
-    private final long DAY_LENGTH = 86400000;
+    public static final long DAY_LENGTH = 86400000;
     private final long WEEK_LENGTH = 604800000;
     private ArrayList<Task> tasks;
     private Context mContext;
@@ -60,7 +60,7 @@ public class TaskAdapter extends BaseAdapter {
 
         if (convertView == null) {
             holder = new ViewHolder();
-            newView = inflater.inflate(R.layout.task_badge_view, parent, false);
+            newView = inflater.inflate(R.layout.task_badge_view, null, false);
             holder.icon = newView.findViewById(R.id.task_icon);
             holder.name = newView.findViewById(R.id.task_name);
             holder.type = newView.findViewById(R.id.task_type);
