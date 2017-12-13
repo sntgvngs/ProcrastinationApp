@@ -112,7 +112,7 @@ EditTask extends AppCompatActivity {
         updateTaskButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(taskName.getText().toString() != "") {
+                if(taskName.getText().toString().length() > 0) {
                     others.add(new Task(taskName.getText().toString(),
                             Task.Type.valueOf(String.valueOf(taskType.getSelectedItem())),
                             myCalendar,

@@ -98,7 +98,7 @@ public class NewTask extends AppCompatActivity {
         addTaskButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(taskName.getText().toString() != "") {
+                if(taskName.getText().toString().length() > 0) {
 
                    Task adding = new Task(taskName.getText().toString(),
                             Task.Type.valueOf(String.valueOf(taskType.getSelectedItem())),

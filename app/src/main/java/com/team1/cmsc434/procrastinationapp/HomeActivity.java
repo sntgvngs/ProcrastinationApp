@@ -16,6 +16,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class HomeActivity extends AppCompatActivity {
@@ -32,14 +33,6 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceStance) {
         super.onCreate(savedInstanceStance);
-
-        FileOutputStream fos;
-        try {
-            fos = openFileOutput(dataFile, Context.MODE_PRIVATE);
-            fos.close();
-        } catch (Exception E){
-            // ;)
-        }
 
         setContentView(R.layout.home_layout);
 
@@ -84,17 +77,12 @@ public class HomeActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         mAdapter.clear();
-        FileInputStream fis;
-        try {
-            fis = openFileInput(dataFile);
-            Scanner scanner = new Scanner(fis);
-            scanner.useDelimiter("`"); // ` will separate entries in the file
-            while(scanner.hasNext())
-                mAdapter.add(new Task(scanner.next()));
-            scanner.close();
-            fis.close();
-        } catch (java.io.IOException e) {
-            Log.d(TAG, "Unable to access dataFile. Has user added any tasks?");
+
+        ArrayList<Task> tasks = getTasks();
+        Collections.sort(tasks, new HomeComparator());
+
+        for(int i = 0; i < 3; i++) {
+            mAdapter.add(tasks.get(i));
         }
     }
 
